@@ -6,6 +6,10 @@
   <img src="https://img.shields.io/github/languages/top/CIPIX-off/CodeBreak?color=8300FF">
 </p>
 
+<p align="center">
+  <img src="images/CodeBreakASCII.png" alt="Logo de code break en A.S.C.I.I" style="width:100%;"/>
+</p>
+
 <h3>Credits</h3>
 <ul>
   <li><a href="https://discord.gg/pZSVzVkXBR">Discord of CodeBreak</a><br></li>
