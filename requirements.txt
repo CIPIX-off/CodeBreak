@@ -1,0 +1,6 @@
+colorama>=0.4.4
+datetime
+datetime
+requests
+discord
+aioconsole

@@ -8,6 +8,7 @@ versionCode = '0.1'
 # Link
 linkDiscord = 'https://discord.gg/pZSVzVkXBR'
 linkGithub = 'https://github.com/CIPIX-off/CodeBreak'
+linkGithubSimple = 'github.com/CIPIX-off/CodeBreak'
 linkUpdate = 'https://raw.githubusercontent.com/CIPIX-off/CodeBreak/main/config/info.py'
 # Webhooks
 webhookName = 'CodeBreak'
