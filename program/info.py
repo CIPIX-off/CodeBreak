@@ -2,14 +2,16 @@
 # All rights reserved.
 # Tous droits réservés.
 
-import colorama, sys, os
-colorama.init()
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config.config import *
-from config.menu import *
-from config.info import *
-terminalTitle('Info')
+try :
+    import sys, os
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from config.config import *
+    from config.menu import *
+    from config.info import *
+except Exception as e :
+    errorModule(e)
 
+terminalTitle('Info')
 def english():
     print(f"""
 {TIME_YELLOW()} {INFO_YELLOW} Information : 

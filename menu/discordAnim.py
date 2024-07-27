@@ -1,6 +1,13 @@
-import time, os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config.config import *
+# © 2024 CIPIX
+# All rights reserved.
+# Tous droits réservés.
+
+try :
+    import time, os, sys
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from config.config import *
+except Exception as e :
+    errorModule(e)
 
 temps = 0.1
 colorDiscord = blue

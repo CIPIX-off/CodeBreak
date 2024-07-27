@@ -2,11 +2,14 @@
 # All rights reserved.
 # Tous droits réservés.
 
-import colorama, sys, os
-colorama.init()
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config.config import *
-from config.menu import *
+try :
+    import sys, os
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from config.config import *
+    from config.menu import *
+except Exception as e :
+    errorModule(e)
+
 terminalTitle('Setting/PromptColor')
 
 while True :

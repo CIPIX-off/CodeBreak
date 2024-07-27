@@ -3,24 +3,31 @@
 # Tous droits réservés.
 
 try:
-    import colorama, json, subprocess, os, sys, datetime, requests, webbrowser
+    import colorama, json, subprocess, os, sys, datetime, requests, webbrowser, platform
     from config.info import *
+    from colorama import Fore, Style
 except Exception as error:
     import os
     print(f'Error in Module : {error}')
     os.system("pause")
 
+data = {}
 colorama.init()
 color = colorama.Fore
-reset = color.RESET
+reset = Style.RESET_ALL
 purple = '\033[38;2;131;0;255m'
+lightPurple = '\033[38;2;178;102;255m'
+pink = '\033[38;2;255;105;180m'
+lightBlue = '\033[38;2;173;216;230m'
+lightLilac = '\033[38;2;200;162;200m'
 white = color.WHITE
 yellow = color.YELLOW
 blue = color.BLUE
 red = color.RED
 green = color.GREEN
-
-parametreFichier = 'config/parametre.json'
+bold = Style.BRIGHT
+dim = Style.DIM
+normal = Style.NORMAL
 
 def githubVersion():
     response = requests.get(linkUpdate)
@@ -54,55 +61,24 @@ def checkUpdate():
 #    else:
 #        pass
 
-def Sauvegarde() :
-    try:
-        with open(parametreFichier, 'w') as fichier:
-            json.dump(data, fichier, indent=4)
-    except FileNotFoundError:
-        print(f'{red}[{white}x{red}] The file {parametreFichier} is not found. {reset}')
-        os.system('pause')
-    except Exception as error:
-        print(f'{red}[{white}x{red}] An error occurred while saving the settings: {yellow}{error}{reset}')
-        os.system('pause')
-
-try: 
-    with open(parametreFichier, 'r') as fichier:
-        data = json.load(fichier)
-except FileNotFoundError:
-    print(f'{red}[{white}x{red}] The file {parametreFichier} is not found. {reset}')
-    os.system('pause')
-except json.JSONDecodeError:
-    print(f'{red}[{white}x{red}] JSON decoding error in the file {parametreFichier}. {reset}')
-    os.system('pause')
-except Exception as error:
-    print(f'{red}[{white}x{red}] An error occurred while loading the settings: {yellow}{error}{reset}')
-    os.system('pause')
-
-def setPromptColor(setting):
+def setPromptColor():
     global promptColor
-    if setting['promptColor'] == 'white':
+    if data['promptColor'] == 'white':
         promptColor = white
-    elif setting['promptColor'] == 'yellow':
+    elif data['promptColor'] == 'yellow':
         promptColor = yellow
-    elif setting['promptColor'] == 'blue':
+    elif data['promptColor'] == 'blue':
         promptColor = blue
-    elif setting['promptColor'] == 'red':
+    elif data['promptColor'] == 'red':
         promptColor = red
-    elif setting['promptColor'] == 'green':
+    elif data['promptColor'] == 'green':
         promptColor = green
-    elif setting['promptColor'] == 'purple':
+    elif data['promptColor'] == 'purple':
         promptColor = purple
     else:
         promptColor = white
         print(f'{ERROR} Unknown prompt color: {data['promptColor']}. Using default white.')
-        os.system('pause')
-
-setPromptColor(data)
-        
-try:
-    username = os.getlogin()
-except:
-    username = 'user'
+        Pause()
 
 def TIME_H():
     return datetime.datetime.now().strftime('%H:%M:%S')
@@ -144,9 +120,26 @@ def startMenu(program):
     elif sys.platform.startswith("linux"):
         file = f'python3 menu/{program}'
         subprocess.run(file, shell=True)
+
+def errorModule(error):
+    print(f'{TIME_RED()} {ERROR} Error Module (Restart install.bat) or contact support on the discord server : {yellow}{error}{reset}')
+    webbrowser.open(linkDiscord)
+    Pause()
+    mainMenu()
+
+def error(error):
+    print(f"\n{TIME_RED()} {ERROR} Error : {yellow}{error}{reset}")
+    Pause()
+    mainMenu()
+
+def errorUrl():
+    print(f"\n{TIME_RED()} {ERROR} Invalid URL ! {reset}")
+    Pause()
+    mainMenu()
         
 def Pause():
     input(f"{TIME()} {WAIT} Press to continue >>> {reset}")
+
 def Soon():
     print(f'{TIME_YELLOW()} {INFO_YELLOW} The chosen option will arrive soon. {reset}')
     Pause()
@@ -194,10 +187,112 @@ MainOption = [
     {"num": 3, "titre": "NukeBot Discord"},
     {"num": 8, "titre": "Soon"},
     {"num": 13, "titre": "Soon"},
-    {"num": 4, "titre": "Soon"},
+    {"num": 4, "titre": "Discord Invitation Info"},
     {"num": 9, "titre": "Soon"},
     {"num": 14, "titre": "Soon"},
     {"num": 5, "titre": "Soon"},
     {"num": 10, "titre": "Soon"},
     {"num": 15, "titre": "Soon"},
 ]
+def Sauvegarde() :
+    try:
+        save_dir = setDirectory()
+        filePath = os.path.join(save_dir, 'Save.json')
+        with open(filePath, 'w') as fichier:
+            json.dump(data, fichier, indent=4)
+    except FileNotFoundError:
+        print(f'{TIME_RED()} {ERROR} The file {filePath} is not found. {reset}')
+        Pause()
+    except Exception as error:
+        print(f'{TIME_RED()} {ERROR} An error occurred while saving the settings: {yellow}{error}{reset}')
+        Pause()
+
+def setDirectory():
+    if platform.system() == 'Windows':
+        documents_folder = os.path.join(os.path.expanduser('~'), 'Documents')
+        return os.path.join(documents_folder, 'CodeBreak')
+    elif platform.system() == 'Linux':
+        return os.path.join(os.path.expanduser('~'), '.local', 'share', 'CodeBreak')
+    elif platform.system() == 'Darwin':
+        library_folder = os.path.join(os.path.expanduser('~'), 'Library', 'Application Support')
+        return os.path.join(library_folder, 'CodeBreak')
+    else:
+        raise OSError(f"{TIME_RED()} {ERROR} Système d'exploitation non supporté{reset}")
+    
+def saveDirectory(path):
+    try:
+        os.makedirs(path, exist_ok=True)
+    except Exception as e:
+        print(f'{TIME_RED()} {ERROR}  Erreur lors de la création du dossier {path}: {e} {reset}')
+        Pause()
+
+def loadData(saveFile):
+    if os.path.exists(saveFile):
+        try :
+            with open(saveFile, 'r') as fichier:
+                data = json.load(fichier)
+                if not isinstance(data, dict):
+                    return {}
+                return data
+        except FileNotFoundError:
+            print(f'{TIME_RED()} {ERROR}  The file {saveFile} is not found. {reset}')
+        except json.JSONDecodeError:
+            print(f'{TIME_RED()} {ERROR}  JSON decoding error in the file {saveFile}. {reset}')
+        except Exception as error:
+            print(f'{TIME_RED()} {ERROR}  An error occurred while loading the settings: {yellow}{error}{reset}')
+        return defaultData
+    else:
+        return defaultData
+
+def FirstSauvegarde(file_path, data):
+    try:
+        with open(file_path, 'w') as fichier:
+            json.dump(data, fichier, indent=4)
+    except Exception as error:
+        print(f'{TIME_RED()} {ERROR}  Une erreur est survenue lors de la sauvegarde des paramètres : {yellow}{error}{reset}')
+        Pause()
+
+def upData(existing_data, newData):
+    if isinstance(existing_data, dict) and isinstance(newData, dict):
+        for key, value in newData.items():
+            if key not in existing_data:
+                existing_data[key] = value
+    else:
+        print(f'{TIME_RED()} {ERROR} Les données existantes ou nouvelles ne sont pas des dictionnaires.{reset}')
+    return existing_data
+
+
+try:
+    username = os.getlogin()
+except:
+    username = 'user'
+
+defaultData = {
+    "promptColor": "purple",
+    "token": "null",
+    "excludeIds": [
+        "726772485252710503"
+    ],
+    "censureToken": "False"
+}
+
+def main():
+    global data
+
+    try :
+        save_dir = setDirectory()
+        save_file_path = os.path.join(save_dir, 'Save.json')
+        saveDirectory(save_dir)
+        existing_data = loadData(save_file_path)
+        data = upData(existing_data, defaultData)
+        FirstSauvegarde(save_file_path, data)
+    except Exception as error:
+        print(f'{TIME_RED()} {ERROR} error loading/writing backup : {error} {reset}')
+        Pause()
+
+    try: 
+        setPromptColor()
+    except Exception as error:
+        print(f'{TIME_RED()} {ERROR} error setPromptColor : {error} {reset}')
+        Pause()
+main()

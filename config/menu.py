@@ -2,11 +2,12 @@
 # All rights reserved.
 # Tous droits réservés.
 
-import colorama
 from config.config import *
-from config.info import *
 
-colorama.init()
+try :
+    from config.info import *
+except Exception as e :
+    errorModule(e)
 
 TITLE = f"""{purple}                                                                                                                                        
                         ▄████▄   ▒█████  ▓█████▄ ▓█████  ▄▄▄▄    ██▀███  ▓█████ ▄▄▄       ██ ▄█▀

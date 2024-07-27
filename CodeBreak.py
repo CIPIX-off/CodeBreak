@@ -6,12 +6,11 @@ try:
    from config.config import *
    from config.menu import *
    from menu.discordAnim import discordAnim
-   import colorama, os
-except:
-   print('Erreur import module in CodeBreak.py')
+   import os
+except Exception as e :
+    errorModule(e)
 
 terminalTitle('MainMenu')
-colorama.init()
 checkUpdate()
 
 while True:
@@ -27,7 +26,7 @@ while True:
       elif select == '3':
          discordAnim('nukeBot.py')
       elif select == '4':
-         Soon()
+         startProgram('infoServerDisc.py')
       elif select == '5':
          Soon()
       elif select == '6':

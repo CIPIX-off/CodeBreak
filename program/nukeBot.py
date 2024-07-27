@@ -2,14 +2,17 @@
 # All rights reserved.
 # Tous droits réservés.
 
-import colorama, sys, os, discord, asyncio, random, aioconsole
-colorama.init()
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config.info import *
-from config.config import *
-from config.menu import *
-from discord.ext import commands
-from discord import Activity, ActivityType
+try :
+    import sys, os, discord, asyncio, random, aioconsole
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from config.info import *
+    from config.config import *
+    from config.menu import *
+    from discord.ext import commands
+    from discord import Activity, ActivityType
+except Exception as e :
+    errorModule(e)
+
 terminalTitle('NukeBot')
 Pause()
 CLEAR()
@@ -374,7 +377,6 @@ async def send_dm_to_members(guild_id):
                 try:
                     await member.send(message)
                     print(f"{TIME_GREEN()} {INFO_GREEN} DM sent to {member}.")
-                    await asyncio.sleep(0.75)
                 except discord.Forbidden:
                     print(f"{TIME_RED()} {ERROR} Failed to send DM to {member}: cannot send DMs.")
                 except discord.HTTPException as e:
