@@ -1,19 +1,12 @@
-# © 2024 CIPIX
-# All rights reserved.
-# Tous droits réservés.
-
-try :
-    import time, os, sys
-    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    from config.config import *
-except Exception as e :
-    errorModule(e)
+import time, os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config.config import *
 
 temps = 0.1
 colorDiscord = blue
-               
-def Discord1():
-    print(f'''
+
+frames = [
+    '''
                                              @@@             @@                     
                                        @@@@@@@@@@@          @@@@@@@@@@@              
                                     @@@@@@@@      @@@@@@@@@@      @@@@@@@@           
@@ -29,7 +22,7 @@ def Discord1():
                             @@@@@@@@@@@@@@@@       @@@@@@@@       @@@@@@@@@@@@@@@@   
                             @@@@@@@@@@@@@@@        @@@@@@@@        @@@@@@@@@@@@@@@   
                             @@@@@@@@@@@@@@@@      @@@@@@@@@@      @@@@@@@@@@@@@@@@   
-                           @@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@  
+                           @@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@  
                            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
                            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
                            @@@@@@@@@@  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  @@@@@@@@@@  
@@ -37,10 +30,8 @@ def Discord1():
                               @@@@@@@@@@@@@@     @@@@@@@@@@@@     @@@@@@@@@@@@@@@    
                                 @@@@@@@@@@@@@@                  @@@@@@@@@@@@@@       
                                     @@@@@@@@@                    @@@@@@@@@                                                                      
-{reset}''')
-
-def Discord2():
-    print(f'''
+{reset}''',
+    '''
                                                             
                                             @@@@@            @@@@@                   
                                       @@@@@@@@@@@            @@@@@@@@@@@             
@@ -64,10 +55,8 @@ def Discord2():
                                 @@@@@@@@@@@@@@                  @@@@@@@@@@@@@@       
                                    @@@@@@@@@@@                  @@@@@@@@@@@          
                                         @@@@                      @@@@                                                                         
-''')
-    
-def Discord3():
-    print(f'''
+''',
+    '''
                                                             
                                                             
                                            @@@@@@@          @@@@@@@                  
@@ -90,10 +79,8 @@ def Discord3():
                                @@@@@@@@@@@@@     @@@@@@@@@@@@     @@@@@@@@@@@@@      
                                   @@@@@@@@@@@@                  @@@@@@@@@@@@         
                                       @@@@@@@                    @@@@@@@                                                                       
-''')
-    
-def Discord4():
-    print(f'''
+''',
+    '''
                                                             
                                                             
                                                             
@@ -115,10 +102,8 @@ def Discord4():
                                @@@@@@@@@@@   @@@@@@@@@@@@@@@@@@@@   @@@@@@@@@@@      
                                  @@@@@@@@@@@@@@                @@@@@@@@@@@@@@        
                                      @@@@@@@@@                  @@@@@@@@@                                                                                                                                           
-''')
-    
-def Discord5():
-    print(f'''
+''',
+    '''
                                                             
                                                             
                                                             
@@ -140,10 +125,8 @@ def Discord5():
                                  @@@@@@@@@@@@     @@@@@@@@@@     @@@@@@@@@@@@        
                                     @@@@@@@@@@@                @@@@@@@@@@@           
                                          @@@@                    @@@@                                                                           
-''')
-    
-def Discord6():
-    print(f'''
+''',
+    '''
                                                             
                                                             
                                                             
@@ -158,16 +141,14 @@ def Discord6():
                                  @@@@@@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@@@@        
                                  @@@@@@@@@@@@@     @@@@@@@@     @@@@@@@@@@@@@        
                                 @@@@@@@@@@@@@@     @@@@@@@@     @@@@@@@@@@@@@@       
-                                @@@@@@@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@@@@@       
+                                @@@@@@@@@@@@@@@ @@@@@@@@@@@@ @@@@@@@@@@@@@@@@       
                                 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@       
                                 @@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@       
                                 @@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@       
                                   @@@@@@@@@@@@@@              @@@@@@@@@@@@@@         
                                       @@@@@@@@@                @@@@@@@@@                                                                       
-''')
-    
-def Discord7():
-    print(f'''
+''',
+    '''
                                                             
                                                             
                                                             
@@ -187,10 +168,8 @@ def Discord7():
                                  @@@@@@@@  @@@@@@@@@@@@@@@@@@@@@@@@  @@@@@@@@        
                                   @@@@@@@@@@@@@ @@@@@@@@@@@@@@ @@@@@@@@@@@@@         
                                      @@@@@@@@@@@              @@@@@@@@@@@                                                                       
-''')
-    
-def Discord8():
-    print(f'''
+''',
+    '''
                                                             
                                                             
                                                             
@@ -210,10 +189,8 @@ def Discord8():
                                   @@@@@@@@@  @@@@@@@@@@@@@@@@@@@@  @@@@@@@@@         
                                     @@@@@@@@@@@@@             @@@@@@@@@@@@           
                                          @@@@@@                @@@@@@                                                                           
-''')
-    
-def Discord9():
-    print(f'''
+''',
+    '''
                                                             
                                                             
                                                             
@@ -232,10 +209,8 @@ def Discord9():
                                   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@         
                                    @@@@@@@@@@@@  @@@@@@@@@@@@  @@@@@@@@@@@@          
                                         @@@@@@@@              @@@@@@@@@                                                                          
-''')
-    
-def Discord10():
-    print(f'''
+''',
+    '''
                                                             
                                                             
                                                             
@@ -253,10 +228,8 @@ def Discord10():
                                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@          
                                    @@@@@@@@@ @@@@@@@@@@@@@@@@@@@@ @@@@@@@@@          
                                       @@@@@@@@@@@            @@@@@@@@@@@                                                                        
-''')
-
-def Discord11():
-    print(f'''{colorDiscord}
+''',
+    '''
                                                             
                                                             
                                                             
@@ -274,40 +247,20 @@ def Discord11():
                                     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@           
                                      @@@@@@@@@   @@@@@@@@@@@@   @@@@@@@@@            
                                           @@@@@@              @@@@@@                                                                           
-''')
-def discordAnim(fichier) : 
-    CLEAR()
-    Discord11()
-    time.sleep(temps)
-    CLEAR()
-    Discord10()
-    time.sleep(temps)
-    CLEAR()
-    Discord9()
-    time.sleep(temps)
-    CLEAR()
-    Discord8()
-    time.sleep(temps)
-    CLEAR()
-    Discord7()
-    time.sleep(temps)
-    CLEAR()
-    Discord6()
-    time.sleep(temps)
-    CLEAR()
-    Discord5()
-    time.sleep(temps)
-    CLEAR()
-    Discord4()
-    time.sleep(temps)
-    CLEAR()
-    Discord3()
-    time.sleep(temps)
-    CLEAR()
-    Discord2()
-    time.sleep(temps)
-    CLEAR()
-    Discord1()
+'''
+]
+
+def CLEAR():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def display_animation():
+    for frame in frames:
+        CLEAR()
+        print(colorDiscord + frame + reset)
+        time.sleep(temps)
+
+def discordAnim(fichier):
+    display_animation()
     print(f'{TIME()} {WAIT} loading... {reset}')
     if fichier == 'null':
         mainMenu()
