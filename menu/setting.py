@@ -17,7 +17,7 @@ SettingOption = [
     {"num": 5, "titre": "bot token censorship"},
     {"num": 8, "titre": "Soon"},
     {"num": 2, "titre": "Soon"},
-    {"num": 6, "titre": "Soon"},
+    {"num": 6, "titre": "IpInfo Token"},
     {"num": 9, "titre": "Soon"},    
     {"num": 3, "titre": "Soon"},
     {"num": 7, "titre": "Soon"},
@@ -42,7 +42,7 @@ while True:
         elif select == '5':
             startProgram('censorToken.py')
         elif select == '6':
-            Soon()
+            startProgram('ipinfoToken.py')
         elif select == '7':
             Soon()
         elif select == '8':

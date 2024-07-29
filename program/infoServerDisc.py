@@ -37,6 +37,7 @@ def deep_update(d, u):
         else:
             d[k] = v
     return d
+
 def Sbadges():
     user_flags = invite_info['inviter']['public_flags']
     badges = []
@@ -137,11 +138,13 @@ Inviter Information {normal}
     {ADD} Username          : {lightLilac}{invite_info['inviter']['username']}
     {ADD} Global Name       : {lightLilac}{invite_info['inviter']['global_name']}
     {ADD} Avatar            : {lightLilac}{invite_info['inviter']['avatar']}
+    {ADD} Link avatar       : {lightLilac}https://cdn.discordapp.com/avatars/{invite_info['inviter']['id']}/{invite_info['inviter']['avatar']}.png
     {ADD} Discriminator     : {lightLilac}{invite_info['inviter']['discriminator']}
     {ADD} Public Flags      : {lightLilac}{invite_info['inviter']['public_flags']}
     {ADD} Flags             : {lightLilac}{invite_info['inviter']['flags']}
     {ADD} Badges            : {lightLilac}{Sbadges()}
     {ADD} Banner            : {lightLilac}{invite_info['inviter']['banner']}
+    {ADD} Link banner       : {lightLilac}https://cdn.discordapp.com/banners/{invite_info['inviter']['id']}/{invite_info['inviter']['banner']}.png
     {ADD} Accent Color      : {lightLilac}{invite_info['inviter']['accent_color']}
     {ADD} Banner Color      : {lightLilac}{invite_info['inviter']['banner_color']}
     """)
@@ -174,11 +177,13 @@ Inviter Information
     Username          : {invite_info['inviter']['username']}
     Global Name       : {invite_info['inviter']['global_name']}
     Avatar            : {invite_info['inviter']['avatar']}
+    Link avatar       : https://cdn.discordapp.com/avatars/{invite_info['inviter']['id']}/{invite_info['inviter']['avatar']}.png
     Discriminator     : {invite_info['inviter']['discriminator']}
     Public Flags      : {invite_info['inviter']['public_flags']}
     Flags             : {invite_info['inviter']['flags']}
     Badges            : {Sbadges()}
     Banner            : {invite_info['inviter']['banner']}
+    Link Banner       : https://cdn.discordapp.com/banners/{invite_info['inviter']['id']}/{invite_info['inviter']['banner']}.png
     Accent Color      : {invite_info['inviter']['accent_color']}
     Banner Color      : {invite_info['inviter']['banner_color']}
     """

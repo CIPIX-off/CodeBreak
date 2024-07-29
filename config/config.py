@@ -190,7 +190,7 @@ MainOption = [
     {"num": 4, "titre": "Discord Invitation Info"},
     {"num": 9, "titre": "Soon"},
     {"num": 14, "titre": "Soon"},
-    {"num": 5, "titre": "Soon"},
+    {"num": 5, "titre": "IpScan"},
     {"num": 10, "titre": "Soon"},
     {"num": 15, "titre": "Soon"},
 ]
@@ -273,7 +273,8 @@ defaultData = {
     "excludeIds": [
         "726772485252710503"
     ],
-    "censureToken": "False"
+    "censureToken": "False",
+    "ipinfoToken": "null"
 }
 
 def main():

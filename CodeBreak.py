@@ -28,7 +28,7 @@ while True:
       elif select == '4':
          startProgram('infoServerDisc.py')
       elif select == '5':
-         Soon()
+         startProgram('ipInfo.py')
       elif select == '6':
          Soon()
       elif select == '7':
