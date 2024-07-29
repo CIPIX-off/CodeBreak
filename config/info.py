@@ -4,7 +4,7 @@
 
 # General Information 
 creator = 'Cipix'
-versionCode = '0.2'
+versionCode = '0.3'
 # Link
 linkDiscord = 'https://discord.gg/pZSVzVkXBR'
 linkGithub = 'https://github.com/CIPIX-off/CodeBreak'
