@@ -77,7 +77,7 @@ def setPromptColor():
         promptColor = purple
     else:
         promptColor = white
-        print(f'{ERROR} Unknown prompt color: {data['promptColor']}. Using default white.')
+        print(f'{ERROR} Unknown prompt color: {data["promptColor"]}. Using default white.')
         Pause()
 
 def TIME_H():

@@ -2,12 +2,15 @@
 # All rights reserved.
 # Tous droits réservés.
 
+def errorModule(e):
+    print(f"An error occurred: {e}")
+
 try:
    from config.config import *
    from config.menu import *
    from menu.discordAnim import discordAnim
    import os
-except Exception as e :
+except Exception as e:
     errorModule(e)
 
 terminalTitle('MainMenu')
